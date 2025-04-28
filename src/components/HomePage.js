@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
 function HomePage() {
@@ -20,20 +20,32 @@ function HomePage() {
   };
 
   return (
-    <div className="home">
-      HomePage
-      <button className="max-h-[75vh] px-10" onClick={apiCall}>
+    <div className=" mx-auto flex flex-col items-center justify-center p-5">
+      <button
+        className=" rounded border-4 border-gray-400 p-3 text-2xl font-bold uppercase tracking-wider hover:scale-110"
+        onClick={apiCall}
+      >
         Lekérdezés
       </button>
-      <div>
+      <div className=" flex flex-wrap items-center justify-center gap-5 p-5">
         {data.map((item) => (
-          <div key={item.id} id={item.id} className={item.alkotasAzonosito}>
-            <h1>{item.nev}</h1>
+          <div
+            key={item.id}
+            id={item.id}
+            className="w-72 h-[550px] flex flex-col items-center p-5"
+          >
+            <img
+              className="p-2"
+              alt={item.nev}
+              src={`https://picsum.photos/300/400?random${item.id}`}
+            />
+            <div className="font-bold text-center uppercase tracking-wider">
+              {item.nev}
+            </div>
             <div>{item.alkotasAzonosito}</div>
             <div>{item.keletkezesKezdoIdopontjaInt}</div>
             <div>{item.tipus}</div>
             <div>{item.megjelenitendoNev}</div>
-            <img src={`https://picsum.photos/200/300?random${item.id}`} />
           </div>
         ))}
       </div>
