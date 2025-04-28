@@ -26,22 +26,16 @@ function HomePage() {
         Lekérdezés
       </button>
       <div>
-        {data.map(
-          (
-            id,
-            nev,
-            alkotasAzonosito,
-            keletkezesKezdoIdopontjaInt,
-            tipus,
-            megjelenitendoNev
-          ) => (
-            <div id={id} className={alkotasAzonosito}>
-              <h1>{nev}</h1>
-              <div>{megjelenitendoNev}</div>
-              <div>{keletkezesKezdoIdopontjaInt}</div>
-            </div>
-          )
-        )}
+        {data.map((item) => (
+          <div key={item.id} id={item.id} className={item.alkotasAzonosito}>
+            <h1>{item.nev}</h1>
+            <div>{item.alkotasAzonosito}</div>
+            <div>{item.keletkezesKezdoIdopontjaInt}</div>
+            <div>{item.tipus}</div>
+            <div>{item.megjelenitendoNev}</div>
+            <img src={`https://picsum.photos/200/300?random${item.id}`} />
+          </div>
+        ))}
       </div>
     </div>
   );
